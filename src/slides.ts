@@ -64,10 +64,45 @@ export const slides: SlideData[] = [
     layout: 'timeline',
     title: 'My Journey',
     steps: [
-      { label: '01', title: 'Before', body: 'What editor did I use before? What was my workflow like? This is where the story begins.' },
-      { label: '02', title: 'The Switch', body: 'What made me try Vim? The moment of curiosity that started it all.' },
-      { label: '03', title: 'The Struggle', body: 'The early days. Forgetting to switch modes. Editing at half speed. Almost giving up.' },
-      { label: '04', title: 'The Click', body: 'The moment it all made sense. When editing became an extension of thinking.' },
+      {
+        label: '01',
+        title: 'Before',
+        bullets: [
+          'VSCode was just the default',
+          '"Vim" was just a word I\'d heard',
+          'Felt mysterious, in the dark',
+        ],
+      },
+      {
+        label: '02',
+        title: 'The Switch',
+        bullets: [
+          'Uni systems unit \u2014 SSH\'d into servers with no GUI',
+          'Realised how much more efficient it could be',
+          'Fell into a massive Neovim rabbit hole',
+        ],
+      },
+      {
+        label: '03',
+        title: 'The Struggle',
+        bullets: [
+          'Productivity took a nosedive',
+          'Instinctively reaching for the mouse',
+          'Wrong keys causing random edits',
+          'Never sure which mode I was in',
+        ],
+      },
+      {
+        label: '04',
+        title: 'The Click',
+        bullets: [
+          'Forced myself to stick with it',
+          'After 2\u20133 months \u2014 all muscle memory',
+          'Less thinking, more doing',
+          'Customising config and plugins to my liking',
+          'Now I can\'t go back',
+        ],
+      },
     ],
   },
   {
@@ -146,11 +181,29 @@ export const slides: SlideData[] = [
     title: 'Live Demo',
   },
   {
-    layout: 'setup',
+    layout: 'tiered',
     title: 'My Setup',
-    subtitle: 'What to watch for',
-    tags: ['Theme', 'Telescope', 'LSP', 'Treesitter', 'Harpoon'],
-    footnote: 'Your editor becomes a reflection of how you work.',
+    tiers: [
+      {
+        heading: 'Must Have',
+        items: [
+          { name: 'Telescope', description: 'Fuzzy finder \u2014 files, grep, buffers, symbols' },
+          { name: 'LSP', description: 'Autocomplete, diagnostics, go-to-definition' },
+          { name: 'Treesitter', description: 'Smart syntax highlighting and text objects' },
+          { name: 'Oil', description: 'Edit your filesystem like a buffer' },
+        ],
+      },
+      {
+        heading: 'Nice to Have',
+        items: [
+          { name: 'Conform', description: 'Auto-formatter for every language' },
+          { name: 'Gitsigns', description: 'Git diff markers in the gutter' },
+          { name: 'Markdown Preview', description: 'Live rendered preview in the browser' },
+          { name: 'Diffview', description: 'Rich side-by-side git diff view' },
+        ],
+      },
+    ],
+    footnote: '+ many more \u2014 there\u2019s probably a Neovim plugin for anything you need.',
   },
   {
     layout: 'tiered',
@@ -192,6 +245,11 @@ export const slides: SlideData[] = [
         heading: 'Vimium',
         body: 'Browser extension \u2014 navigate links, tabs, and pages entirely from your keyboard',
         accent: 'cyan',
+      },
+      {
+        heading: 'Aerospace',
+        body: 'Tiling window manager for macOS \u2014 arrange windows and workspaces with vim-like keys',
+        accent: 'purple',
       },
     ],
     footnote: 'The vim philosophy extends beyond your editor.',

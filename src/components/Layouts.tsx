@@ -7,7 +7,6 @@ import type {
   CardGridSlideData,
   HierarchySlideData,
   DemoSlideData,
-  SetupSlideData,
   TieredSlideData,
   ClosingSlideData,
   ModesSlideData,
@@ -124,8 +123,12 @@ export function TimelineSlide({ title, steps, footnote, activeStep }: TimelineSl
           ))}
         </div>
         <div className="timeline-detail">
-          {activeStep >= 0 && steps[activeStep]?.body && (
-            <p className="timeline-body" key={activeStep}>{steps[activeStep].body}</p>
+          {activeStep >= 0 && steps[activeStep]?.bullets && (
+            <ul className="timeline-bullets" key={activeStep}>
+              {steps[activeStep].bullets.map((bullet, i) => (
+                <li key={i} style={{ '--i': i } as React.CSSProperties}>{bullet}</li>
+              ))}
+            </ul>
           )}
         </div>
       </div>
@@ -245,37 +248,8 @@ export function DemoSlide({ title }: DemoSlideData) {
   );
 }
 
-/* ── Setup Slide ── */
-export function SetupSlide({ title, subtitle, tags, footnote }: SetupSlideData) {
-  return (
-    <div className="slide setup-slide">
-      <h2 className="slide-title stagger" style={{ '--i': 0 } as React.CSSProperties}>{title}</h2>
-      <p className="setup-subtitle stagger" style={{ '--i': 1 } as React.CSSProperties}>{subtitle}</p>
-      <div className="setup-label stagger" style={{ '--i': 2 } as React.CSSProperties}>
-        [ live walkthrough ]
-      </div>
-      <div className="tag-list">
-        {tags.map((tag, i) => (
-          <span
-            key={i}
-            className="tag stagger"
-            style={{ '--i': 3 + i } as React.CSSProperties}
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-      {footnote && (
-        <p className="footnote stagger" style={{ '--i': 3 + tags.length } as React.CSSProperties}>
-          {footnote}
-        </p>
-      )}
-    </div>
-  );
-}
-
 /* ── Tiered Slide ── */
-export function TieredSlide({ title, tiers }: TieredSlideData) {
+export function TieredSlide({ title, tiers, footnote }: TieredSlideData) {
   let idx = 1;
   return (
     <div className="slide tiered-slide">
@@ -306,6 +280,11 @@ export function TieredSlide({ title, tiers }: TieredSlideData) {
           </div>
         );
       })}
+      {footnote && (
+        <p className="footnote stagger" style={{ '--i': idx } as React.CSSProperties}>
+          {footnote}
+        </p>
+      )}
     </div>
   );
 }

@@ -7,7 +7,6 @@ import {
   CardGridSlide,
   HierarchySlide,
   DemoSlide,
-  SetupSlide,
   TieredSlide,
   ClosingSlide,
   ModesSlide,
@@ -34,8 +33,6 @@ export function SlideRenderer({ slide, subStep = -1 }: SlideRendererProps) {
       return <HierarchySlide {...slide} />;
     case 'demo':
       return <DemoSlide {...slide} />;
-    case 'setup':
-      return <SetupSlide {...slide} />;
     case 'tiered':
       return <TieredSlide {...slide} />;
     case 'closing':

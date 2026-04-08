@@ -23,7 +23,7 @@ export interface TwoColumnSlideData {
 export interface TimelineSlideData {
   layout: 'timeline';
   title: string;
-  steps: { label: string; title: string; body?: string }[];
+  steps: { label: string; title: string; bullets?: string[] }[];
   footnote?: string;
 }
 
@@ -51,14 +51,6 @@ export interface DemoSlideData {
   title: string;
 }
 
-export interface SetupSlideData {
-  layout: 'setup';
-  title: string;
-  subtitle: string;
-  tags: string[];
-  footnote?: string;
-}
-
 export interface TieredSlideData {
   layout: 'tiered';
   title: string;
@@ -66,6 +58,7 @@ export interface TieredSlideData {
     heading: string;
     items: { name: string; description: string; highlight?: boolean }[];
   }[];
+  footnote?: string;
 }
 
 export interface ClosingSlideData {
@@ -88,7 +81,6 @@ export type SlideData =
   | CardGridSlideData
   | HierarchySlideData
   | DemoSlideData
-  | SetupSlideData
   | TieredSlideData
   | ClosingSlideData
   | ModesSlideData;

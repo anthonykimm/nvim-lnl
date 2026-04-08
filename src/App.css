@@ -447,31 +447,50 @@
 }
 
 .timeline-detail {
-  min-height: 48px;
+  min-height: 140px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding-top: 12px;
 }
 
-.timeline-body {
+.timeline-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.timeline-bullets li {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 300;
   color: var(--text);
+  line-height: 1.6;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
   opacity: 0;
-  text-align: center;
-  padding: 0 100px;
-  line-height: 1.7;
-  animation: detail-in 0.4s ease forwards;
+  transform: translateY(8px);
+  animation: timeline-bullet-in 0.4s ease-out forwards;
+  animation-delay: calc(var(--i, 0) * 70ms + 120ms);
 }
 
-@keyframes detail-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 0.55; transform: translateY(0); }
+.timeline-bullets li::before {
+  content: '\2014';
+  color: var(--accent);
+  opacity: 0.4;
+  flex-shrink: 0;
+}
+
+@keyframes timeline-bullet-in {
+  to { opacity: 0.75; transform: translateY(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .timeline-body { animation: none; opacity: 0.55; }
+  .timeline-bullets li { animation: none; opacity: 0.75; transform: none; }
   .timeline-card { transition: none; }
 }
 
@@ -902,52 +921,6 @@
   font-size: 14px;
   color: var(--accent-secondary);
   opacity: 0.2;
-}
-
-/* ═══ Setup Slide ═══ */
-
-.setup-subtitle {
-  font-family: var(--font-body);
-  font-size: 18px;
-  font-weight: 300;
-  color: var(--text);
-  margin-bottom: 10px;
-  opacity: 0.6;
-}
-
-.setup-label {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-bottom: 44px;
-  letter-spacing: 1px;
-}
-
-.tag-list {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.tag {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 400;
-  padding: 10px 24px;
-  border: 1px solid var(--border);
-  color: var(--text);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  background: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.tag::after { display: none; }
-
-.tag:nth-child(1) {
-  border-color: var(--accent);
-  color: var(--accent);
-  box-shadow: 0 0 8px var(--accent-glow);
 }
 
 /* ═══ Tiered Slide ═══ */
