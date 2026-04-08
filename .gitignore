@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Excluded from deployment
+examples/
+.playwright-mcp/
+
+# OS / editor
+.DS_Store
+*.log
